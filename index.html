@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playnite Splash Manager</title>
+    <script src="https://cdn.tailwindcss.com/3.4.5"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E0E10; /* Fallback color while image loads */
+            color: #ECECEC;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/bg-optimized.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(30%) blur(20px);
+            z-index: -1;
+            animation: subtleFloat 60s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtleFloat {
+            0% {
+                transform: scale(1.05) translate(-1%, -1%);
+            }
+            50% {
+                transform: scale(1.1) translate(1%, 1%);
+            }
+            100% {
+                transform: scale(1.05) translate(0%, -1%);
+            }
+        }
+
+        .card-glass {
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            transition: all 0.3s ease;
+        }
+
+        .card-glass:hover {
+            box-shadow: 0 0 12px rgba(80, 150, 255, 0.25);
+            transform: scale(1.01);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .glow-button {
+            transition: all 0.3s ease;
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 15px rgba(66, 153, 225, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .title-gradient {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+
+        .feature-card {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+    </style>
+    <script>
+        // Preload background image for smoother experience
+        document.addEventListener('DOMContentLoaded', function() {
+            const img = new Image();
+            img.src = 'assets/bg-optimized.jpg';
+        });
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#EBF5FF',
+                            500: '#3B82F6',
+                            600: '#2563EB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen text-gray-100">
+    <div class="max-w-6xl mx-auto px-4 py-12 relative">
+        <div class="flex items-center justify-center mb-12">
+            <img src="assets/playnite-optimized.png" alt="Playnite Logo" class="w-12 h-12 mr-4 drop-shadow-lg">
+            <h1 class="text-4xl font-bold text-white">Playnite Splash Manager</h1>
+        </div>
+
+        <!-- Hello World Card -->
+        <div class="card-glass feature-card rounded-xl p-8 backdrop-blur-xl mb-6 text-center">
+            <div class="mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 pulse-animation">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold title-gradient mb-4">Hello, World!</h2>
+                <p class="text-lg text-gray-200 mb-6">Welcome to the Playnite Splash Manager - your gateway to managing splash screen packages for Playnite.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white/5 rounded-lg p-4">
+                    <div class="flex items-center mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        <h3 class="font-semibold text-white">Package Downloads</h3>
+                    </div>
+                    <p class="text-sm text-gray-300">Find and download complete splash screen packages for your Playnite installation.</p>
+                </div>
+                
+                <div class="bg-white/5 rounded-lg p-4">
+                    <div class="flex items-center mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                        <h3 class="font-semibold text-white">Easy Management</h3>
+                    </div>
+                    <p class="text-sm text-gray-300">Organize and manage your splash screen videos and images with ease.</p>
+                </div>
+            </div>
+
+            <button id="getStartedBtn" class="glow-button bg-white/10 hover:bg-white/15 text-white font-medium py-3 px-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 ease-in-out transform flex items-center justify-center mx-auto space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                <span>Get Started</span>
+            </button>
+        </div>
+
+        <!-- Features Section -->
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="card-glass rounded-xl p-6 backdrop-blur-xl text-center">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold title-gradient mb-2">Video Splashes</h3>
+                <p class="text-sm text-gray-300">Discover beautiful video splash screens to enhance your Playnite experience.</p>
+            </div>
+
+            <div class="card-glass rounded-xl p-6 backdrop-blur-xl text-center">
+                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold title-gradient mb-2">Image Collections</h3>
+                <p class="text-sm text-gray-300">Browse curated collections of splash screen images for every mood and theme.</p>
+            </div>
+
+            <div class="card-glass rounded-xl p-6 backdrop-blur-xl text-center">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold title-gradient mb-2">Package Manager</h3>
+                <p class="text-sm text-gray-300">Organize and manage your splash packages with our intuitive interface.</p>
+            </div>
+        </div>
+
+        <!-- Status Section -->
+        <div id="statusSection" class="mt-8 text-center">
+            <!-- Dynamic content will be added here by JavaScript -->
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
